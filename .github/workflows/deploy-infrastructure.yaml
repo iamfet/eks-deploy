@@ -143,8 +143,9 @@ jobs:
             comment.user.type === 'Bot' && comment.body.includes('Terraform Plan')
           );
           
+          const hasChanges = '${{ steps.plan.outputs.has_changes }}' === 'true';
           const output = `#### Terraform Plan 📖
-          **Plan Exit Code:** \`${{ steps.plan.outputs.exitcode }}\` ${${{ steps.plan.outputs.has_changes }} === 'true' ? '(Changes detected)' : '(No changes)'}
+          **Plan Exit Code:** \`${{ steps.plan.outputs.exitcode }}\` ${hasChanges ? '(Changes detected)' : '(No changes)'}`
           
           <details><summary>Show Plan</summary>
           

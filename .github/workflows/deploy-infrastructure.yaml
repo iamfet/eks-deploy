@@ -145,7 +145,7 @@ jobs:
           
           const hasChanges = '${{ steps.plan.outputs.has_changes }}' === 'true';
           const output = `#### Terraform Plan 📖
-          **Plan Exit Code:** \`${{ steps.plan.outputs.exitcode }}\` ${hasChanges ? '(Changes detected)' : '(No changes)'}`
+          **Plan Exit Code:** \`${{ steps.plan.outputs.exitcode }}\` ${hasChanges ? '(Changes detected)' : '(No changes)'}
           
           <details><summary>Show Plan</summary>
           

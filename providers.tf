@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket       = "state-eks-secure-infra-automation"
+    bucket       = "state-eks-deploy"
     key          = "terraform.tfstate"
     region       = "us-east-1"
     encrypt      = true
@@ -11,11 +11,11 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = ">= 5.99"
+      version = "~> 5.9"
     }
     kubernetes = {
       source  = "hashicorp/kubernetes"
-      version = ">= 2.37"
+      version = "~> 2.37"
     }
     helm = {
       source  = "hashicorp/helm"

@@ -26,6 +26,7 @@ module "vpc" {
     "kubernetes.io/cluster/${var.project_name}-eks-cluster" = "shared" # Tags required for EKS to discover subnets
   }
 
+
   public_subnet_tags = {
     "kubernetes.io/cluster/${var.project_name}-eks-cluster" = "shared"
     "kubernetes.io/role/elb"                                = 1 # Identifies this subnet for external load balancers

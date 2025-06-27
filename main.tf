@@ -2,7 +2,7 @@ provider "aws" {
   region = var.aws_region
 }
 
-#VPC for Cluster
+#VPC Cluster
 data "aws_availability_zones" "azs" {
   state = "available"
 } #queries AWS to provide the names of availability zones dynamically
@@ -38,7 +38,7 @@ module "vpc" {
 
 }
 
-#EKS for Cluster
+#EKS Cluster
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 20.36"

@@ -130,7 +130,7 @@ jobs:
 
       - name: Comment PR
         if: github.event_name == 'pull_request'
-        uses: actions/github-script@v7.0.1
+        uses: actions/github-script@v7
         with:
           script: |
             const { data: comments } = await github.rest.issues.listComments({
@@ -145,15 +145,15 @@ jobs:
 
             const hasChanges = inputs.has_changes === 'true';
             const output = `#### Terraform Plan 📖  
-            **Plan Exit Code:** \`${inputs.exitcode}\` ${hasChanges ? '(Changes detected)' : '(No changes)'}  
+**Plan Exit Code:** \`${inputs.exitcode}\` ${hasChanges ? '(Changes detected)' : '(No changes)'}  
 
-            <details><summary>Show Plan</summary>
+<details><summary>Show Plan</summary>
 
-            \`\`\`hcl
-            ${inputs.stdout}
-            \`\`\`
+\`\`\`hcl
+${inputs.stdout}
+\`\`\`
 
-            </details>`;
+</details>`;
 
             if (botComment) {
               await github.rest.issues.updateComment({
@@ -170,10 +170,10 @@ jobs:
                 body: output
               });
             }
-            inputs:
-              exitcode: ${{ steps.plan.outputs.exitcode }}
-              has_changes: ${{ steps.plan.outputs.has_changes }}
-              stdout: ${{ steps.plan.outputs.stdout }}
+          inputs:
+            exitcode: ${{ steps.plan.outputs.exitcode }}
+            has_changes: ${{ steps.plan.outputs.has_changes }}
+            stdout: ${{ steps.plan.outputs.stdout }}
 
   apply:
     name: Apply

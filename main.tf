@@ -61,7 +61,6 @@ module "eks" {
     vpc-cni                = {}
   }
 
-
   # Set authentication mode to API
   authentication_mode = "API"
 
